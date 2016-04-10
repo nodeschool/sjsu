@@ -1,0 +1,17 @@
+{
+  "name": "gitsearch",
+  "version": "0.0.1",
+  "description": "A simple command-line tool for searching git repositories",
+  "author": "Henry Spivey",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "request": "^2.70.0"
+  },
+  "bin": {
+    "gitsearch": "gitsearch.js"
+  }
+}
