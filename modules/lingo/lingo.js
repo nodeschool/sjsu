@@ -15,9 +15,13 @@ if(!program.args.length) {
     program.help();
 } else {
     var keywords = program.args;
-    var url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBPmtcq2mhYuTmR1pQ1xNPVAYbssRJKlec&source='+program.source+'&target='+program.target+'&q='+keywords;  
-    console.log(url);
-    
+    console.log(keywords.join(" "));
+    if (keywords.length >1) {
+    	var url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBPmtcq2mhYuTmR1pQ1xNPVAYbssRJKlec&source='+program.source+'&target='+program.target+'&q='+keywords.join(" ");
+    } else {
+    	var url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBPmtcq2mhYuTmR1pQ1xNPVAYbssRJKlec&source='+program.source+'&target='+program.target+'&q='+keywords;
+    }
+
 }
 
 
