@@ -1,14 +1,35 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var request = require('request');
+var chalk = require('chalk');
 
 program
     .version('0.0.1')
-    .usage('<keywords>')
+    .usage('[options] <keywords>')
+    .option('-s, --source [source]', 'Specify the source language')
+    .option('-t, --target [target]', 'Specify the target language')
     .parse(process.argv);
 
 if(!program.args.length) {
     program.help();
 } else {
-    console.log('Keywords: ' + program.args);   
+    var keywords = program.args;
+    var url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBPmtcq2mhYuTmR1pQ1xNPVAYbssRJKlec&source='+program.source+'&target='+program.target+'&q='+keywords;  
 }
+
+
+request({
+    method: 'GET',
+    url: url
+}, function(error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+        var body = JSON.parse(body);
+        
+        console.log("response is ", response.body.data.translations.translatedText);
+        
+    } else if (error) {
+        console.log('Error: ' + error);
+    }
+});
