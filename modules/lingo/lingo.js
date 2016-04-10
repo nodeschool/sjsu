@@ -27,7 +27,9 @@ request({
     if (!error && response.statusCode == 200) {
         var body = JSON.parse(body);
         
-        console.log("response is ", response.body.data.translations.translatedText);
+        for(var i = 0; i<body.data.translations.length; i++) {
+        	console.log(chalk.magenta(body.data.translations[i].translatedText + '\n'));
+        }
         
     } else if (error) {
         console.log('Error: ' + error);
