@@ -16,6 +16,8 @@ if(!program.args.length) {
 } else {
     var keywords = program.args;
     var url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBPmtcq2mhYuTmR1pQ1xNPVAYbssRJKlec&source='+program.source+'&target='+program.target+'&q='+keywords;  
+    console.log(url);
+    
 }
 
 
@@ -28,7 +30,7 @@ request({
         var body = JSON.parse(body);
         
         for(var i = 0; i<body.data.translations.length; i++) {
-        	console.log(chalk.magenta(body.data.translations[i].translatedText + '\n'));
+        	console.log(chalk.magenta(body.data.translations[i].translatedText));
         }
         
     } else if (error) {
